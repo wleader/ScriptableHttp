@@ -1,0 +1,14 @@
+<Project>
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Version>0.1.0</Version>
+        <FileVersion>0.1.0</FileVersion>
+        <AssemblyVersion>0.1.0.0</AssemblyVersion>
+        <Copyright>2025 William Leader</Copyright>
+        <Product>OeSystems.ScriptableHttpClient</Product>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    </PropertyGroup>
+</Project>

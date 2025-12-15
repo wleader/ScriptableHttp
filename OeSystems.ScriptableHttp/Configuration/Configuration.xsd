@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:config="https://tempuri.org/ScriptableHttpConfiguration" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="https://tempuri.org/ScriptableHttpConfiguration"
+        elementFormDefault="qualified">
+
+    <annotation>
+        <documentation>
+            This schema defines the configuration for the ScriptableHttpClient.
+        </documentation>
+    </annotation>
+
+    <element name="Configuration" type="config:ScriptableHttpConfig"/>
+
+    <complexType name="ScriptableHttpConfig">
+        <annotation>
+            <documentation>
+                The root of the configuration data.
+                Consists of a name, and set of sequentially performed operations.
+            </documentation>
+        </annotation>
+        <sequence>
+            <element name="Name" type="config:Name"/>
+            <element name="Operation" type="config:OperationConfig" maxOccurs="unbounded"/>
+            <element name="Script" type="config:ScriptBody" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="OperationConfig">
+        <annotation>
+            <documentation>
+                An operation represents the process of:
+                1. Build The URI from the HTTP options and Key-Values as needed.
+                2. Build the request headers using the Key-Values as needed.
+                3. Build the request body from the Request Template using the Key-Values as needed.
+                4. Make the HTTP request.
+                5. Update the Key-Values from the Response Headers as needed.
+                6. Update the Key-Values from the Response Body as needed.
+            </documentation>
+        </annotation>
+        <sequence>
+            <element name="Name" type="config:Name"/>
+            <element name="Request" type="config:RequestConfig"/>
+            <element name="Response" type="config:ResponseConfig" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="RequestConfig">
+        <annotation>
+            <documentation>
+                Defines the HTTP Method that will be used for a request.
+            </documentation>
+        </annotation>
+        <choice>
+            <element name="Get" type="config:GetRequest"/>
+            <element name="Post" type="config:PostRequest"/>
+        </choice>
+    </complexType>
+
+    <complexType name="GetRequest">
+        <sequence>
+            <element name="Culture" type="config:Culture" minOccurs="0"/>
+            <element name="Uri" type="config:URI"/>
+            <element name="TimeoutSeconds" type="int" default="10" minOccurs="0"/>
+            <element name="Header" type="config:RequestHeader" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="PostRequest">
+        <complexContent>
+            <extension base="config:GetRequest">
+                <sequence>
+                    <element name="BodyTemplate" type="config:BodyTemplate"/>
+                    <element name="Mappings" type="config:BodyMap" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="ResponseConfig">
+        <sequence>
+            <element name="Culture" type="config:Culture" minOccurs="0"/>
+            <element name="Header" type="config:ResponseHeader" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="Mappings" type="config:BodyMap" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="URI">
+        <annotation>
+            <documentation>
+                Defines the URI that will be used for the HTTP operation.
+                A Mapping can be used to alter the URI using the key-values prior to the request being made.
+            </documentation>
+        </annotation>
+        <sequence>
+            <element name="Value" type="string"/>
+            <element name="Regex" type="config:RegexMapping" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="RequestHeader">
+        <annotation>
+            <documentation>
+                Defines an HTTP Header that will be added to the request.
+                A Regex Map may be used update the value from the key-value pairs.
+            </documentation>
+        </annotation>
+        <sequence>
+            <element name="Name" type="string"/>
+            <element name="Value" type="string"/>
+            <element name="Regex" type="config:RegexMapping" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="ResponseHeader">
+        <annotation>
+            <documentation>
+                Defines a header that is expected in the response
+            </documentation>
+        </annotation>
+        <sequence>
+            <element name="Regex" type="config:RegexMapping" maxOccurs="unbounded"/>
+        </sequence>
+        <attribute name="name" type="string" use="required"/>
+        <attribute name="required" type="boolean" default="false"/>
+    </complexType>
+
+    <complexType name="BodyMap">
+        <choice>
+            <element name="XPath" type="config:XPathMapping" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="JsonPath" type="config:JsonPathMapping" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="Regex" type="config:RegexMapping" minOccurs="0" maxOccurs="unbounded"/>
+        </choice>
+    </complexType>
+
+    <complexType name="BaseMapping">
+        <sequence>
+            <element name="Query" type="string"/>
+            <element name="Regex" type="config:RegexMapping" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+        <attribute name="key" type="string" use="required"/>
+        <attribute name="required" type="boolean" default="false"/>
+        <attribute name="format" type="string"/>
+        <attribute name="dataType" type="string" default="System.String"/>
+    </complexType>
+
+    <complexType name="XPathMapping">
+        <annotation>
+            <documentation>
+                Defines a relationship between the key-value pairs and a value in XML structured data.
+                The value of the element must be a valid XPath.
+                The key attribute identifies the name of the value to read or set.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="config:BaseMapping"/>
+        </complexContent>
+    </complexType>
+
+    <complexType name="JsonPathMapping">
+        <annotation>
+            <documentation>
+                Defines a relationship between the key-value pairs and a value in JSON structured data.
+                The value of the element must be a valid JSON Path.
+                The key attribute identifies the name of the value to read or set.
+                Used for both creating the request from the template, and reading the response.
+            </documentation>
+        </annotation>
+        <complexContent>
+            <extension base="config:BaseMapping"/>
+        </complexContent>
+    </complexType>
+
+    <complexType name="RegexMapping">
+        <annotation>
+            <documentation>
+                Defines a mapping between a key-value pair and any kind of text that uses Regular Expressions.
+                The Value of the element must be a valid Regular Expression.
+                The key attribute identifies the name of the value to read or set.
+                May be used on requests, responses, the URI, or Custom Headers.
+            </documentation>
+        </annotation>
+        <simpleContent>
+            <extension base="string">
+                <attribute name="key" type="string" use="required"/>
+                <attribute name="required" type="boolean" default="false"/>
+                <attribute name="format" type="string"/>
+            </extension>
+        </simpleContent>
+    </complexType>
+
+    <complexType name="BodyTemplate">
+        <annotation>
+            <documentation>
+                Defines a block of text that will be used for the HTTP request body.
+                An XML CDATA block is especially useful for defining this value.
+                Not used for GET Requests.
+            </documentation>
+        </annotation>
+        <simpleContent>
+            <extension base="string">
+                <attribute name="contentType" type="string" use="required"/>
+            </extension>
+        </simpleContent>
+    </complexType>
+
+    <simpleType name="ScriptBody">
+        <annotation>
+            <documentation>
+                Defines a C# script that controls the order of operations.
+                If not Defined, each operation is called in sequence.
+            </documentation>
+        </annotation>
+        <restriction base="string"/>
+    </simpleType>
+
+    <simpleType name="Name">
+        <annotation>
+            <documentation>
+                A Name for a script or operation. Mostly this exists for logging.
+            </documentation>
+        </annotation>
+        <restriction base="string"/>
+    </simpleType>
+
+    <simpleType name="Culture">
+        <restriction base="string"/>
+    </simpleType>
+
+</schema>

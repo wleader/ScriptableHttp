@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OeSystems.ScriptableHttp", "OeSystems.ScriptableHttp\OeSystems.ScriptableHttp.csproj", "{5FBC8CBA-8819-4DFB-8FAD-3E8CEAE3100C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{9A49EB7C-B143-42BC-9BFA-8DA50A741AEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{2C4518EA-0D62-4191-B789-914AE9C692A7}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OeSystems.ScriptableHttp.Tests", "UnitTests\OeSystems.ScriptableHttp.Tests\OeSystems.ScriptableHttp.Tests.csproj", "{BEDD1B50-212D-4C9C-A60D-43D586416063}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5FBC8CBA-8819-4DFB-8FAD-3E8CEAE3100C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FBC8CBA-8819-4DFB-8FAD-3E8CEAE3100C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FBC8CBA-8819-4DFB-8FAD-3E8CEAE3100C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FBC8CBA-8819-4DFB-8FAD-3E8CEAE3100C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEDD1B50-212D-4C9C-A60D-43D586416063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEDD1B50-212D-4C9C-A60D-43D586416063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEDD1B50-212D-4C9C-A60D-43D586416063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEDD1B50-212D-4C9C-A60D-43D586416063}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BEDD1B50-212D-4C9C-A60D-43D586416063} = {9A49EB7C-B143-42BC-9BFA-8DA50A741AEE}
+	EndGlobalSection
+EndGlobal

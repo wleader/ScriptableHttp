@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration xmlns="https://tempuri.org/ScriptableHttpConfiguration">
+    <Name>Configuration Three</Name>
+    <Operation>
+        <Name>Example GET</Name>
+        <Request>
+            <Get>
+                <Uri>
+                    <Value>http://localhost:5000/api/echo</Value>
+                </Uri>
+            </Get>
+        </Request>
+        <Response>
+            
+        </Response>
+    </Operation>
+</Configuration>

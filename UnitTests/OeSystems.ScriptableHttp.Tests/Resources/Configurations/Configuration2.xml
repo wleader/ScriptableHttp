@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration xmlns="https://tempuri.org/ScriptableHttpConfiguration">
+    <Name>Configuration Two</Name>
+    <Operation>
+        <Name>Post JSON</Name>
+        <Request>
+            <Post>
+                <Uri>
+                    <Value>http://localhost:5000/api/echo</Value>
+                </Uri>
+                <BodyTemplate contentType="application/json">
+                    <![CDATA[
+                    {
+                    "Property1":"Value1",
+                    "Property2":"Value2"
+                    }
+                    ]]>
+                </BodyTemplate>
+            </Post>
+        </Request>
+        <Response>
+            <Mapping>
+                <JsonMap>
+                    <JsonPath key="property1">$.Property1</JsonPath>
+                    <JsonPath key="property2">$.Property2</JsonPath>
+                </JsonMap>
+            </Mapping>
+        </Response>
+    </Operation>
+</Configuration>

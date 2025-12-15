@@ -1,0 +1,1 @@
+ xscgen -n OeSystems.ScriptableHttp.Configuration --verbose --ct=System.Collections.Generic.List\`1 --collectionSettersMode=Public Configuration.xsd

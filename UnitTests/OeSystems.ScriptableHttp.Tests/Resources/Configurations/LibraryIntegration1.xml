@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration xmlns="https://tempuri.org/ScriptableHttpConfiguration">
+    <Name>LibraryIntegration1</Name>
+    <Operation>
+        <Name>GetToken</Name>
+        <Request>
+            <Get>
+                <Uri>
+                    <Value>http://localhost/gettoken</Value>
+                </Uri>
+            </Get>
+        </Request>
+        <Response>
+            <Mappings>
+                <Regex key="Token">.*</Regex>
+            </Mappings>
+        </Response>
+    </Operation>
+    <Operation>
+        <Name>Operation1</Name>
+        <Request>
+            <Get>
+                <Uri>
+                    <Value>http://localhost/operation1</Value>
+                </Uri>
+                <Header>
+                    <Name>Authorization</Name>
+                    <Value>Bearer $TOKEN$</Value>
+                    <Regex key="Token">$TOKEN$</Regex>
+                </Header>
+            </Get>
+        </Request>
+        <Response>
+            <Mappings>
+                <JsonPath key="Status">
+                    <Query>$.Status</Query>
+                </JsonPath>
+                <JsonPath key="StatusCode" dataType="System.Int32">
+                    <Query>$.StatusCode</Query>
+                </JsonPath>
+                <JsonPath key="StatusCodeStr">
+                    <Query>$.StatusCode</Query>
+                </JsonPath>
+            </Mappings>
+        </Response>
+    </Operation>
+    <Script><![CDATA[
+        await OperationAsync("Operation1");
+        if(LastOperationSuccessful)
+            return;
+        await OperationAsync("GetToken");
+        SetPersisted("Token");
+        await OperationAsync("Operation1");
+    ]]>
+    </Script>
+</Configuration>
