@@ -1,3 +1,4 @@
+using OeSystems.ScriptableHttp.Regex;
 using Uri = OeSystems.ScriptableHttp.Configuration.Uri;
 
 namespace OeSystems.ScriptableHttp;

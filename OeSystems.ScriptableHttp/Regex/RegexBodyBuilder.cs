@@ -1,6 +1,6 @@
 using OeSystems.ScriptableHttp.Configuration;
 
-namespace OeSystems.ScriptableHttp;
+namespace OeSystems.ScriptableHttp.Regex;
 
 public interface IRegexBodyBuilder : IBodyBuilder;
 

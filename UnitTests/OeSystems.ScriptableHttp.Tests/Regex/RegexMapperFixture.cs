@@ -2,8 +2,9 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using OeSystems.ScriptableHttp.Configuration;
+using OeSystems.ScriptableHttp.Regex;
 
-namespace OeSystems.ScriptableHttp.Tests;
+namespace OeSystems.ScriptableHttp.Tests.Regex;
 
 [TestClass]
 public class RegexMapperFixture

@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Extensions.DependencyInjection;
+using OeSystems.ScriptableHttp.Regex;
 
 namespace OeSystems.ScriptableHttp;
 
