@@ -1,3 +1,4 @@
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using OeSystems.ScriptableHttp.Configuration;
@@ -8,54 +9,45 @@ namespace OeSystems.ScriptableHttp.Tests;
 public class RegexMapperFixture
 {
     private RegexMapper _mapper = null!;
-    private readonly Mock<IValueFormatter> _formatter = new();
+    private readonly Mock<IRegexMapperSingle> _mapperSingle = new();
 
     [TestInitialize]
     public void Initialize()
     {
-        _formatter.Reset();
+        _mapperSingle.Reset();
 
-        _formatter.Setup(x => x.GetFormatted(
-                It.IsAny<IReadOnlyValues>(),
-                It.IsAny<string>(),
-                It.IsAny<string?>()))
-            .Returns(GetFormatted);
+        _mapperSingle.Setup(x => x.Replace(
+            It.IsAny<IReadOnlyValues>(),
+            It.IsAny<RegexMapping>(),
+            It.IsAny<string>()))
+            .Returns(() => "Result_" + _mapperSingle.Invocations.Count);
         
-        _mapper = new RegexMapper(
-            _formatter.Object);
-    }
-
-    private static string GetFormatted(
-        IReadOnlyValues values,
-        string key,
-        string? format)
-    {
-        return values.TryGetValue(key, out var obj)
-            ? obj?.ToString() ?? string.Empty
-            : string.Empty;
+        _mapper = new(_mapperSingle.Object);
     }
     
     [TestMethod]
-    [DataRow("Replace {{something}} in the middle.", "{{something}}", "42", "Replace 42 in the middle.", DisplayName = "MatchOne")]
-    [DataRow("-{{something}} {{something}}-", "{{something}}", "42", "-42 42-", DisplayName = "MatchMultiple")]
-    [DataRow("-57 57-", "{{something}}", "42", "-57 57-", DisplayName = "MatchNone")]
-    public void Given_InputExpressionVariable_When_Replace_Then_Expected_(string input, string expression, string variable, string expected)
+    [DataRow(0)]
+    [DataRow(1)]
+    [DataRow(2)]
+    [DataRow(10)]
+    public void Given_Mappings_When_Replace_Then_EachMappingIsUsed(int mappingCount)
     {
-        var config = new RegexMapping()
-        {
-            Key = "Key",
-            Format = null,
-            Required = false,
-            Value = expression,
-        };
-
-        var values = new Values { { "Key", variable } };
-
-        var actual = _mapper.Replace(values, config, input);
+        var mappings = Enumerable
+            .Range(0, mappingCount)
+            .Select(_ => new RegexMapping())
+            .ToList();
         
+        var actual = _mapper.Replace(TestData.EmptyValues, mappings, "Result_0");
+        
+        var expected = "Result_" + mappingCount; 
         Assert.AreEqual(expected, actual);
-        
-        _formatter.Verify(x => x.GetFormatted(values, config.Key, config.Format), Times.Once);
-        _formatter.VerifyNoOtherCalls();
+
+        for(var i =  0; i < mappingCount; i++)
+        {
+            var mapping = mappings[i];
+            var expectedInput = "Result_" + i;
+            _mapperSingle.Verify(x => x.Replace(TestData.EmptyValues, mapping, expectedInput), Times.Once);
+        }
+        _mapperSingle.VerifyNoOtherCalls();
     }
 }

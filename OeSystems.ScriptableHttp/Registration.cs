@@ -14,6 +14,7 @@ public static class Registration
         services.AddScoped<IPostRequestBuilder, PostRequestBuilder>();
         services.AddScoped<IUriBuilder, UriBuilder>();
         services.AddScoped<IRegexMapper, RegexMapper>();
+        services.AddScoped<IRegexMapperSingle, RegexMapperSingle>();
         services.AddScoped<IValueFormatter, ValueFormatter>();
         services.AddScoped<IStringContentBuilder, StringContentBuilder>();
         services.AddScoped<IBodyBuilder, BodyBuilder>();

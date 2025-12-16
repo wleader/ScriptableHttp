@@ -14,11 +14,6 @@ public class UriBuilder(IRegexMapper mapper) : IUriBuilder
 {
     public System.Uri Build(IReadOnlyValues values, Uri config)
     {
-        var value = config.Value;
-        foreach (var mapping in  config.Regex)
-        {
-            value = mapper.Replace(values, mapping, value);
-        }
-        return new(value);
+        return new(mapper.Replace(values, config.Regex, config.Value));
     }
 }
