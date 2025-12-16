@@ -41,7 +41,7 @@ public class RegexMapperSingleFixture
     [DataRow("-57 57-", "{{something}}", "42", "-57 57-", DisplayName = "MatchNone")]
     public void Given_InputExpressionVariable_When_Replace_Then_Expected_(string input, string expression, string variable, string expected)
     {
-        var config = new RegexMapping()
+        var config = new RegexMap()
         {
             Key = "Key",
             Format = null,

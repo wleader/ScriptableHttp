@@ -1,11 +1,11 @@
+using OeSystems.ScriptableHttp.Configuration;
 using OeSystems.ScriptableHttp.Regex;
-using Uri = OeSystems.ScriptableHttp.Configuration.Uri;
 
 namespace OeSystems.ScriptableHttp;
 
 public interface IUriBuilder
 {
-    System.Uri Build(IReadOnlyValues values, Uri config);
+    System.Uri Build(IReadOnlyValues values, UriConfig config);
 }
 
 /// <summary>
@@ -13,7 +13,7 @@ public interface IUriBuilder
 /// </summary>
 public class UriBuilder(IRegexMapper mapper) : IUriBuilder
 {
-    public System.Uri Build(IReadOnlyValues values, Uri config)
+    public System.Uri Build(IReadOnlyValues values, UriConfig config)
     {
         return new(mapper.Replace(values, config.Regex, config.Value));
     }

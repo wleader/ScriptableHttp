@@ -5,13 +5,13 @@ namespace OeSystems.ScriptableHttp;
 
 public interface IJsonMappingHandler
 {
-    void PerformMap(IReadOnlyValues values, JObject document, JsonPathMapping config);
+    void PerformMap(IReadOnlyValues values, JObject document, JsonPathMap config);
 }
 
 public class JsonMappingHandler(
     IValueFormatter formatter) : IJsonMappingHandler
 {
-    public void PerformMap(IReadOnlyValues values, JObject document, JsonPathMapping config)
+    public void PerformMap(IReadOnlyValues values, JObject document, JsonPathMap config)
     {
         var formatted = formatter.GetFormatted(
             values,

@@ -52,26 +52,26 @@
             </documentation>
         </annotation>
         <choice>
-            <element name="Get" type="config:GetRequest"/>
-            <element name="Post" type="config:PostRequest"/>
+            <element name="Get" type="config:GetConfig"/>
+            <element name="Post" type="config:PostConfig"/>
         </choice>
     </complexType>
 
-    <complexType name="GetRequest">
+    <complexType name="GetConfig">
         <sequence>
             <element name="Culture" type="config:Culture" minOccurs="0"/>
-            <element name="Uri" type="config:URI"/>
+            <element name="Uri" type="config:UriConfig"/>
             <element name="TimeoutSeconds" type="int" default="10" minOccurs="0"/>
-            <element name="Header" type="config:RequestHeader" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="Header" type="config:RequestHeaderConfig" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 
-    <complexType name="PostRequest">
+    <complexType name="PostConfig">
         <complexContent>
-            <extension base="config:GetRequest">
+            <extension base="config:GetConfig">
                 <sequence>
                     <element name="BodyTemplate" type="config:BodyTemplate"/>
-                    <element name="Mappings" type="config:BodyMap" minOccurs="0"/>
+                    <element name="Mappings" type="config:BodyConfig" minOccurs="0"/>
                 </sequence>
             </extension>
         </complexContent>
@@ -80,12 +80,12 @@
     <complexType name="ResponseConfig">
         <sequence>
             <element name="Culture" type="config:Culture" minOccurs="0"/>
-            <element name="Header" type="config:ResponseHeader" minOccurs="0" maxOccurs="unbounded"/>
-            <element name="Mappings" type="config:BodyMap" minOccurs="0"/>
+            <element name="Header" type="config:ResponseHeaderConfig" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="Mappings" type="config:BodyConfig" minOccurs="0"/>
         </sequence>
     </complexType>
 
-    <complexType name="URI">
+    <complexType name="UriConfig">
         <annotation>
             <documentation>
                 Defines the URI that will be used for the HTTP operation.
@@ -94,11 +94,11 @@
         </annotation>
         <sequence>
             <element name="Value" type="string"/>
-            <element name="Regex" type="config:RegexMapping" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="Regex" type="config:RegexMap" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 
-    <complexType name="RequestHeader">
+    <complexType name="RequestHeaderConfig">
         <annotation>
             <documentation>
                 Defines an HTTP Header that will be added to the request.
@@ -108,35 +108,35 @@
         <sequence>
             <element name="Name" type="string"/>
             <element name="Value" type="string"/>
-            <element name="Regex" type="config:RegexMapping" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="Regex" type="config:RegexMap" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 
-    <complexType name="ResponseHeader">
+    <complexType name="ResponseHeaderConfig">
         <annotation>
             <documentation>
                 Defines a header that is expected in the response
             </documentation>
         </annotation>
         <sequence>
-            <element name="Regex" type="config:RegexMapping" maxOccurs="unbounded"/>
+            <element name="Regex" type="config:RegexMap" maxOccurs="unbounded"/>
         </sequence>
         <attribute name="name" type="string" use="required"/>
         <attribute name="required" type="boolean" default="false"/>
     </complexType>
 
-    <complexType name="BodyMap">
+    <complexType name="BodyConfig">
         <choice>
-            <element name="XPath" type="config:XPathMapping" minOccurs="0" maxOccurs="unbounded"/>
-            <element name="JsonPath" type="config:JsonPathMapping" minOccurs="0" maxOccurs="unbounded"/>
-            <element name="Regex" type="config:RegexMapping" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="XPath" type="config:XPathMap" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="JsonPath" type="config:JsonPathMap" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="Regex" type="config:RegexMap" minOccurs="0" maxOccurs="unbounded"/>
         </choice>
     </complexType>
 
-    <complexType name="BaseMapping">
+    <complexType name="BaseMap">
         <sequence>
             <element name="Query" type="string"/>
-            <element name="Regex" type="config:RegexMapping" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="Regex" type="config:RegexMap" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
         <attribute name="key" type="string" use="required"/>
         <attribute name="required" type="boolean" default="false"/>
@@ -144,7 +144,7 @@
         <attribute name="dataType" type="string" default="System.String"/>
     </complexType>
 
-    <complexType name="XPathMapping">
+    <complexType name="XPathMap">
         <annotation>
             <documentation>
                 Defines a relationship between the key-value pairs and a value in XML structured data.
@@ -153,11 +153,11 @@
             </documentation>
         </annotation>
         <complexContent>
-            <extension base="config:BaseMapping"/>
+            <extension base="config:BaseMap"/>
         </complexContent>
     </complexType>
 
-    <complexType name="JsonPathMapping">
+    <complexType name="JsonPathMap">
         <annotation>
             <documentation>
                 Defines a relationship between the key-value pairs and a value in JSON structured data.
@@ -167,11 +167,11 @@
             </documentation>
         </annotation>
         <complexContent>
-            <extension base="config:BaseMapping"/>
+            <extension base="config:BaseMap"/>
         </complexContent>
     </complexType>
 
-    <complexType name="RegexMapping">
+    <complexType name="RegexMap">
         <annotation>
             <documentation>
                 Defines a mapping between a key-value pair and any kind of text that uses Regular Expressions.

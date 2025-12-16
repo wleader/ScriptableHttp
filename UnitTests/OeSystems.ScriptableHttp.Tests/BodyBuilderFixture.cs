@@ -13,7 +13,7 @@ public class BodyBuilderFixture
     private readonly Mock<IJsonBodyBuilder> _jsonBuilder = new();
     private readonly Mock<IXmlBodyBuilder> _xmlBuilder = new();
 
-    private PostRequest _request = null!;
+    private PostConfig _request = null!;
     private string _buildResult = null!;
 
     [TestInitialize]
@@ -25,17 +25,17 @@ public class BodyBuilderFixture
 
         _regexBuilder.Setup(x => x.Build(
                 It.IsAny<IReadOnlyValues>(),
-                It.IsAny<PostRequest>()))
+                It.IsAny<PostConfig>()))
             .Returns("REGEX_CONTENT");
         
         _jsonBuilder.Setup(x => x.Build(
             It.IsAny<IReadOnlyValues>(),
-            It.IsAny<PostRequest>()))
+            It.IsAny<PostConfig>()))
             .Returns("JSON_CONTENT");
 
         _xmlBuilder.Setup(x => x.Build(
                 It.IsAny<IReadOnlyValues>(),
-                It.IsAny<PostRequest>()))
+                It.IsAny<PostConfig>()))
             .Returns("XML_CONTENT");
         
         _builder = new(

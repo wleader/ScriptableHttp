@@ -18,7 +18,7 @@ public class GetRequestBuilderFixture
     private readonly System.Uri _builtUri = new("http://localhost");
     private readonly CultureInfo _culture = new("en-US");
 
-    private readonly GetRequest _config = new()
+    private readonly GetConfig _config = new()
     {
         Uri = new(),
     };
@@ -71,7 +71,7 @@ public class GetRequestBuilderFixture
         _headersBuilder.Verify(x => x.Build(
                 It.IsAny<HttpRequestHeaders>(),
                 It.IsAny<IReadOnlyValues>(),
-                It.IsAny<IList<RequestHeader>>()),
+                It.IsAny<IList<RequestHeaderConfig>>()),
             Times.Never);
     }
 }

@@ -17,7 +17,7 @@ public class JsonMappingHandlerFixture
         { "Key1", "newValue" },
     };
 
-    private readonly JsonPathMapping _configuration = new()
+    private readonly JsonPathMap _configuration = new()
     {
         Key = "Key1",
         Query = "$.parent.child",

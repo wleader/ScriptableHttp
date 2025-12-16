@@ -11,7 +11,7 @@ public class RegexBodyBuilderFixture
     private RegexBodyBuilder _builder = null!;
     private readonly Mock<IRegexMapper> _mapper = new();
 
-    private readonly PostRequest _config = new()
+    private readonly PostConfig _config = new()
     {
         BodyTemplate = new()
         {

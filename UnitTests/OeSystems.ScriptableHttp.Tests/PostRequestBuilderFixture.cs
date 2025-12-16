@@ -15,7 +15,7 @@ public class PostRequestBuilderFixture
     private readonly Mock<ICultureContext> _cultureProvider = new();
     private readonly Mock<IRequestHeadersBuilder> _requestHeadersBuilder = new();
 
-    private PostRequest _config = null!;
+    private PostConfig _config = null!;
 
     private readonly Values _values = new() { { "Key", "Variable" } };
 

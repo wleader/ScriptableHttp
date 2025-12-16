@@ -114,19 +114,19 @@ namespace OeSystems.ScriptableHttp.Configuration
     {
         
         [System.Xml.Serialization.XmlElementAttribute("Get")]
-        public GetRequest Get { get; set; }
+        public GetConfig Get { get; set; }
         
         [System.Xml.Serialization.XmlElementAttribute("Post")]
-        public PostRequest Post { get; set; }
+        public PostConfig Post { get; set; }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "3.0.1188.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("GetRequest", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
+    [System.Xml.Serialization.XmlTypeAttribute("GetConfig", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PostRequest))]
-    public partial class GetRequest
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PostConfig))]
+    public partial class GetConfig
     {
         
         [System.Xml.Serialization.XmlElementAttribute("Culture")]
@@ -134,7 +134,7 @@ namespace OeSystems.ScriptableHttp.Configuration
         
         [System.ComponentModel.DataAnnotations.RequiredAttribute(AllowEmptyStrings=true)]
         [System.Xml.Serialization.XmlElementAttribute("Uri")]
-        public Uri Uri { get; set; }
+        public UriConfig Uri { get; set; }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         private int _timeoutSeconds = 10;
@@ -154,10 +154,10 @@ namespace OeSystems.ScriptableHttp.Configuration
         }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        private System.Collections.Generic.List<RequestHeader> _header;
+        private System.Collections.Generic.List<RequestHeaderConfig> _header;
         
         [System.Xml.Serialization.XmlElementAttribute("Header")]
-        public System.Collections.Generic.List<RequestHeader> Header
+        public System.Collections.Generic.List<RequestHeaderConfig> Header
         {
             get
             {
@@ -183,11 +183,11 @@ namespace OeSystems.ScriptableHttp.Configuration
         }
         
         /// <summary>
-        /// <para xml:lang="en">Initializes a new instance of the <see cref="GetRequest" /> class.</para>
+        /// <para xml:lang="en">Initializes a new instance of the <see cref="GetConfig" /> class.</para>
         /// </summary>
-        public GetRequest()
+        public GetConfig()
         {
-            this._header = new System.Collections.Generic.List<RequestHeader>();
+            this._header = new System.Collections.Generic.List<RequestHeaderConfig>();
         }
     }
     
@@ -199,10 +199,10 @@ namespace OeSystems.ScriptableHttp.Configuration
         "o alter the URI using the key-values prior to the request being made."))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "3.0.1188.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("URI", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
+    [System.Xml.Serialization.XmlTypeAttribute("UriConfig", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Uri
+    public partial class UriConfig
     {
         
         [System.ComponentModel.DataAnnotations.RequiredAttribute(AllowEmptyStrings=true)]
@@ -210,10 +210,10 @@ namespace OeSystems.ScriptableHttp.Configuration
         public string Value { get; set; }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        private System.Collections.Generic.List<RegexMapping> _regex;
+        private System.Collections.Generic.List<RegexMap> _regex;
         
         [System.Xml.Serialization.XmlElementAttribute("Regex")]
-        public System.Collections.Generic.List<RegexMapping> Regex
+        public System.Collections.Generic.List<RegexMap> Regex
         {
             get
             {
@@ -239,11 +239,11 @@ namespace OeSystems.ScriptableHttp.Configuration
         }
         
         /// <summary>
-        /// <para xml:lang="en">Initializes a new instance of the <see cref="Uri" /> class.</para>
+        /// <para xml:lang="en">Initializes a new instance of the <see cref="UriConfig" /> class.</para>
         /// </summary>
-        public Uri()
+        public UriConfig()
         {
-            this._regex = new System.Collections.Generic.List<RegexMapping>();
+            this._regex = new System.Collections.Generic.List<RegexMap>();
         }
     }
     
@@ -256,10 +256,10 @@ namespace OeSystems.ScriptableHttp.Configuration
     [System.ComponentModel.DescriptionAttribute(@"Defines a mapping between a key-value pair and any kind of text that uses Regular Expressions. The Value of the element must be a valid Regular Expression. The key attribute identifies the name of the value to read or set. May be used on requests, responses, the URI, or Custom Headers.")]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "3.0.1188.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("RegexMapping", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
+    [System.Xml.Serialization.XmlTypeAttribute("RegexMap", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class RegexMapping
+    public partial class RegexMap
     {
         
         /// <summary>
@@ -301,10 +301,10 @@ namespace OeSystems.ScriptableHttp.Configuration
         " update the value from the key-value pairs."))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "3.0.1188.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("RequestHeader", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
+    [System.Xml.Serialization.XmlTypeAttribute("RequestHeaderConfig", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class RequestHeader
+    public partial class RequestHeaderConfig
     {
         
         [System.ComponentModel.DataAnnotations.RequiredAttribute(AllowEmptyStrings=true)]
@@ -316,10 +316,10 @@ namespace OeSystems.ScriptableHttp.Configuration
         public string Value { get; set; }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        private System.Collections.Generic.List<RegexMapping> _regex;
+        private System.Collections.Generic.List<RegexMap> _regex;
         
         [System.Xml.Serialization.XmlElementAttribute("Regex")]
-        public System.Collections.Generic.List<RegexMapping> Regex
+        public System.Collections.Generic.List<RegexMap> Regex
         {
             get
             {
@@ -345,20 +345,20 @@ namespace OeSystems.ScriptableHttp.Configuration
         }
         
         /// <summary>
-        /// <para xml:lang="en">Initializes a new instance of the <see cref="RequestHeader" /> class.</para>
+        /// <para xml:lang="en">Initializes a new instance of the <see cref="RequestHeaderConfig" /> class.</para>
         /// </summary>
-        public RequestHeader()
+        public RequestHeaderConfig()
         {
-            this._regex = new System.Collections.Generic.List<RegexMapping>();
+            this._regex = new System.Collections.Generic.List<RegexMap>();
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "3.0.1188.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("PostRequest", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
+    [System.Xml.Serialization.XmlTypeAttribute("PostConfig", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class PostRequest : GetRequest
+    public partial class PostConfig : GetConfig
     {
         
         [System.ComponentModel.DataAnnotations.RequiredAttribute(AllowEmptyStrings=true)]
@@ -366,7 +366,7 @@ namespace OeSystems.ScriptableHttp.Configuration
         public BodyTemplate BodyTemplate { get; set; }
         
         [System.Xml.Serialization.XmlElementAttribute("Mappings")]
-        public BodyMap Mappings { get; set; }
+        public BodyConfig Mappings { get; set; }
     }
     
     /// <summary>
@@ -397,17 +397,17 @@ namespace OeSystems.ScriptableHttp.Configuration
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "3.0.1188.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("BodyMap", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
+    [System.Xml.Serialization.XmlTypeAttribute("BodyConfig", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class BodyMap
+    public partial class BodyConfig
     {
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        private System.Collections.Generic.List<XPathMapping> _xPath;
+        private System.Collections.Generic.List<XPathMap> _xPath;
         
         [System.Xml.Serialization.XmlElementAttribute("XPath")]
-        public System.Collections.Generic.List<XPathMapping> XPath
+        public System.Collections.Generic.List<XPathMap> XPath
         {
             get
             {
@@ -433,20 +433,20 @@ namespace OeSystems.ScriptableHttp.Configuration
         }
         
         /// <summary>
-        /// <para xml:lang="en">Initializes a new instance of the <see cref="BodyMap" /> class.</para>
+        /// <para xml:lang="en">Initializes a new instance of the <see cref="BodyConfig" /> class.</para>
         /// </summary>
-        public BodyMap()
+        public BodyConfig()
         {
-            this._xPath = new System.Collections.Generic.List<XPathMapping>();
-            this._jsonPath = new System.Collections.Generic.List<JsonPathMapping>();
-            this._regex = new System.Collections.Generic.List<RegexMapping>();
+            this._xPath = new System.Collections.Generic.List<XPathMap>();
+            this._jsonPath = new System.Collections.Generic.List<JsonPathMap>();
+            this._regex = new System.Collections.Generic.List<RegexMap>();
         }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        private System.Collections.Generic.List<JsonPathMapping> _jsonPath;
+        private System.Collections.Generic.List<JsonPathMap> _jsonPath;
         
         [System.Xml.Serialization.XmlElementAttribute("JsonPath")]
-        public System.Collections.Generic.List<JsonPathMapping> JsonPath
+        public System.Collections.Generic.List<JsonPathMap> JsonPath
         {
             get
             {
@@ -472,10 +472,10 @@ namespace OeSystems.ScriptableHttp.Configuration
         }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        private System.Collections.Generic.List<RegexMapping> _regex;
+        private System.Collections.Generic.List<RegexMap> _regex;
         
         [System.Xml.Serialization.XmlElementAttribute("Regex")]
-        public System.Collections.Generic.List<RegexMapping> Regex
+        public System.Collections.Generic.List<RegexMap> Regex
         {
             get
             {
@@ -511,21 +511,21 @@ namespace OeSystems.ScriptableHttp.Configuration
         "es the name of the value to read or set."))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "3.0.1188.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("XPathMapping", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
+    [System.Xml.Serialization.XmlTypeAttribute("XPathMap", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class XPathMapping : BaseMapping
+    public partial class XPathMap : BaseMap
     {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "3.0.1188.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("BaseMapping", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
+    [System.Xml.Serialization.XmlTypeAttribute("BaseMap", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(JsonPathMapping))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(XPathMapping))]
-    public partial class BaseMapping
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(JsonPathMap))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(XPathMap))]
+    public partial class BaseMap
     {
         
         [System.ComponentModel.DataAnnotations.RequiredAttribute(AllowEmptyStrings=true)]
@@ -533,10 +533,10 @@ namespace OeSystems.ScriptableHttp.Configuration
         public string Query { get; set; }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        private System.Collections.Generic.List<RegexMapping> _regex;
+        private System.Collections.Generic.List<RegexMap> _regex;
         
         [System.Xml.Serialization.XmlElementAttribute("Regex")]
-        public System.Collections.Generic.List<RegexMapping> Regex
+        public System.Collections.Generic.List<RegexMap> Regex
         {
             get
             {
@@ -562,11 +562,11 @@ namespace OeSystems.ScriptableHttp.Configuration
         }
         
         /// <summary>
-        /// <para xml:lang="en">Initializes a new instance of the <see cref="BaseMapping" /> class.</para>
+        /// <para xml:lang="en">Initializes a new instance of the <see cref="BaseMap" /> class.</para>
         /// </summary>
-        public BaseMapping()
+        public BaseMap()
         {
-            this._regex = new System.Collections.Generic.List<RegexMapping>();
+            this._regex = new System.Collections.Generic.List<RegexMap>();
         }
         
         [System.ComponentModel.DataAnnotations.RequiredAttribute(AllowEmptyStrings=true)]
@@ -620,10 +620,10 @@ namespace OeSystems.ScriptableHttp.Configuration
     [System.ComponentModel.DescriptionAttribute(@"Defines a relationship between the key-value pairs and a value in JSON structured data. The value of the element must be a valid JSON Path. The key attribute identifies the name of the value to read or set. Used for both creating the request from the template, and reading the response.")]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "3.0.1188.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("JsonPathMapping", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
+    [System.Xml.Serialization.XmlTypeAttribute("JsonPathMap", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class JsonPathMapping : BaseMapping
+    public partial class JsonPathMap : BaseMap
     {
     }
     
@@ -639,10 +639,10 @@ namespace OeSystems.ScriptableHttp.Configuration
         public string Culture { get; set; }
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        private System.Collections.Generic.List<ResponseHeader> _header;
+        private System.Collections.Generic.List<ResponseHeaderConfig> _header;
         
         [System.Xml.Serialization.XmlElementAttribute("Header")]
-        public System.Collections.Generic.List<ResponseHeader> Header
+        public System.Collections.Generic.List<ResponseHeaderConfig> Header
         {
             get
             {
@@ -672,11 +672,11 @@ namespace OeSystems.ScriptableHttp.Configuration
         /// </summary>
         public ResponseConfig()
         {
-            this._header = new System.Collections.Generic.List<ResponseHeader>();
+            this._header = new System.Collections.Generic.List<ResponseHeaderConfig>();
         }
         
         [System.Xml.Serialization.XmlElementAttribute("Mappings")]
-        public BodyMap Mappings { get; set; }
+        public BodyConfig Mappings { get; set; }
     }
     
     /// <summary>
@@ -685,18 +685,18 @@ namespace OeSystems.ScriptableHttp.Configuration
     [System.ComponentModel.DescriptionAttribute("Defines a header that is expected in the response")]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("XmlSchemaClassGenerator", "3.0.1188.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute("ResponseHeader", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
+    [System.Xml.Serialization.XmlTypeAttribute("ResponseHeaderConfig", Namespace="https://tempuri.org/ScriptableHttpConfiguration")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class ResponseHeader
+    public partial class ResponseHeaderConfig
     {
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        private System.Collections.Generic.List<RegexMapping> _regex;
+        private System.Collections.Generic.List<RegexMap> _regex;
         
         [System.ComponentModel.DataAnnotations.RequiredAttribute(AllowEmptyStrings=true)]
         [System.Xml.Serialization.XmlElementAttribute("Regex")]
-        public System.Collections.Generic.List<RegexMapping> Regex
+        public System.Collections.Generic.List<RegexMap> Regex
         {
             get
             {
@@ -709,11 +709,11 @@ namespace OeSystems.ScriptableHttp.Configuration
         }
         
         /// <summary>
-        /// <para xml:lang="en">Initializes a new instance of the <see cref="ResponseHeader" /> class.</para>
+        /// <para xml:lang="en">Initializes a new instance of the <see cref="ResponseHeaderConfig" /> class.</para>
         /// </summary>
-        public ResponseHeader()
+        public ResponseHeaderConfig()
         {
-            this._regex = new System.Collections.Generic.List<RegexMapping>();
+            this._regex = new System.Collections.Generic.List<RegexMap>();
         }
         
         [System.ComponentModel.DataAnnotations.RequiredAttribute(AllowEmptyStrings=true)]

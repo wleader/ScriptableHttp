@@ -8,7 +8,7 @@ public interface IJsonBodyBuilder : IBodyBuilder;
 public class JsonBodyBuilder(
     IJsonMappingHandler handler) : IJsonBodyBuilder
 {
-    public string Build(IReadOnlyValues values, PostRequest config)
+    public string Build(IReadOnlyValues values, PostConfig config)
     {
         var document = JObject.Parse(config.BodyTemplate.Value);
         foreach (var jsonPathConfig in config.Mappings.JsonPath)

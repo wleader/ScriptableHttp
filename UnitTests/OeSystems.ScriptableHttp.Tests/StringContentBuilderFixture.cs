@@ -13,7 +13,7 @@ public class StringContentBuilderFixture
 
     private const string Body = "BODY";
 
-    private readonly PostRequest _config = new()
+    private readonly PostConfig _config = new()
     {
         BodyTemplate = new()
         {

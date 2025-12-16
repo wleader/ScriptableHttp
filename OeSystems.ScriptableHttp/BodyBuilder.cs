@@ -5,7 +5,7 @@ namespace OeSystems.ScriptableHttp;
 
 public interface IBodyBuilder
 {
-    string Build(IReadOnlyValues values, PostRequest config);
+    string Build(IReadOnlyValues values, PostConfig config);
 }
 
 public class BodyBuilder(
@@ -13,7 +13,7 @@ public class BodyBuilder(
     IJsonBodyBuilder jsonBodyBuilder,
     IXmlBodyBuilder xmlBodyBuilder) : IBodyBuilder
 {
-    public string Build(IReadOnlyValues values, PostRequest config)
+    public string Build(IReadOnlyValues values, PostConfig config)
     {
         if (config.Mappings.RegexSpecified)
             return regexBuilder.Build(values, config);

@@ -12,7 +12,7 @@ public class JsonBodyBuilderFixture
     private JsonBodyBuilder _builder = null!;
     private readonly Mock<IJsonMappingHandler> _handler = new();
 
-    private readonly PostRequest _configuration = new()
+    private readonly PostConfig _configuration = new()
     {
         BodyTemplate = new()
         {
@@ -42,18 +42,18 @@ public class JsonBodyBuilderFixture
         _handler.Verify(x => x.PerformMap(
                 TestData.EmptyValues,
                 It.IsAny<JObject>(),
-                It.IsAny<JsonPathMapping>()),
+                It.IsAny<JsonPathMap>()),
             Times.Exactly(_configuration.Mappings.JsonPath.Count));
         _handler.VerifyNoOtherCalls();
-        var args = _handler.Invocations.Select(x => x.Arguments[2] as JsonPathMapping).ToList();
+        var args = _handler.Invocations.Select(x => x.Arguments[2] as JsonPathMap).ToList();
         CollectionAssert.AreEqual(_configuration.Mappings.JsonPath, args);
     }
 
     [TestMethod]
     public void Given_HandlerMutatesDocument_When_Build_Then_Result()
     {
-        _handler.Setup(x => x.PerformMap(TestData.EmptyValues, It.IsAny<JObject>(), It.IsAny<JsonPathMapping>()))
-            .Callback((IReadOnlyValues _, JObject o, JsonPathMapping _) =>
+        _handler.Setup(x => x.PerformMap(TestData.EmptyValues, It.IsAny<JObject>(), It.IsAny<JsonPathMap>()))
+            .Callback((IReadOnlyValues _, JObject o, JsonPathMap _) =>
             {
                 o.Add("Key" + o.Count, JToken.FromObject("Value" + o.Count));
             });

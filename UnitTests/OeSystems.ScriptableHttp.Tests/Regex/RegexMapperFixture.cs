@@ -19,7 +19,7 @@ public class RegexMapperFixture
 
         _mapperSingle.Setup(x => x.Replace(
             It.IsAny<IReadOnlyValues>(),
-            It.IsAny<RegexMapping>(),
+            It.IsAny<RegexMap>(),
             It.IsAny<string>()))
             .Returns(() => "Result_" + _mapperSingle.Invocations.Count);
         
@@ -35,7 +35,7 @@ public class RegexMapperFixture
     {
         var mappings = Enumerable
             .Range(0, mappingCount)
-            .Select(_ => new RegexMapping())
+            .Select(_ => new RegexMap())
             .ToList();
         
         var actual = _mapper.Replace(TestData.EmptyValues, mappings, "Result_0");

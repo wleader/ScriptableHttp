@@ -6,7 +6,7 @@ public interface IXmlBodyBuilder : IBodyBuilder;
 
 public class XmlBodyBuilder : IXmlBodyBuilder
 {
-    public string Build(IReadOnlyValues values, PostRequest config)
+    public string Build(IReadOnlyValues values, PostConfig config)
     {
         throw new System.NotImplementedException();
     }

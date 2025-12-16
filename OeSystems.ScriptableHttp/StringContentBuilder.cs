@@ -7,7 +7,7 @@ namespace OeSystems.ScriptableHttp;
 
 public interface IStringContentBuilder
 {
-    StringContent Build(IReadOnlyValues values, PostRequest request);
+    StringContent Build(IReadOnlyValues values, PostConfig request);
 }
 
 /// <summary>
@@ -18,7 +18,7 @@ public class StringContentBuilder(
     IBodyBuilder bodyBuilder)
     : IStringContentBuilder
 {
-    public StringContent Build(IReadOnlyValues values, PostRequest request)
+    public StringContent Build(IReadOnlyValues values, PostConfig request)
     {
         var ct = MediaTypeHeaderValue.Parse(request.BodyTemplate.ContentType);
         var encoding = string.IsNullOrEmpty(ct.CharSet)

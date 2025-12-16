@@ -5,7 +5,7 @@ namespace OeSystems.ScriptableHttp;
 
 public interface IGetRequestBuilder
 {
-    HttpRequestMessage Build(IReadOnlyValues values, GetRequest config);
+    HttpRequestMessage Build(IReadOnlyValues values, GetConfig config);
 }
 
 public class GetRequestBuilder(
@@ -14,7 +14,7 @@ public class GetRequestBuilder(
     ICultureContext cultureContext)
     : IGetRequestBuilder
 {
-    public HttpRequestMessage Build(IReadOnlyValues values, GetRequest config)
+    public HttpRequestMessage Build(IReadOnlyValues values, GetConfig config)
     {
         using var _ = cultureContext.Set(config.Culture);
 

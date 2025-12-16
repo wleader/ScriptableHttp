@@ -19,7 +19,7 @@ public class UriBuilderFixture
 
         _mapper.Setup(x => x.Replace(
                 It.IsAny<IReadOnlyValues>(),
-                It.IsAny<IEnumerable<RegexMapping>>(),
+                It.IsAny<IEnumerable<RegexMap>>(),
                 It.IsAny<string>()))
             .Returns(() => "http://localhost/replaced");
 
@@ -29,7 +29,7 @@ public class UriBuilderFixture
     [TestMethod]
     public void Given_Values_And_Config_When_Build_Then_Result()
     {
-        var config = new Uri
+        var config = new UriConfig
         {
             Value = "http://localhost/initial",
             Regex = [new()],

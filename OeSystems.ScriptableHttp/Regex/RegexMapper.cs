@@ -5,14 +5,14 @@ namespace OeSystems.ScriptableHttp.Regex;
 
 public interface IRegexMapper
 {
-    string Replace(IReadOnlyValues values, IEnumerable<RegexMapping> mapping, string input);
+    string Replace(IReadOnlyValues values, IEnumerable<RegexMap> mapping, string input);
 }
 
 
 
 public class RegexMapper(IRegexMapperSingle mapperSingle) : IRegexMapper
 {
-    public string Replace(IReadOnlyValues values, IEnumerable<RegexMapping> mapping, string input)
+    public string Replace(IReadOnlyValues values, IEnumerable<RegexMap> mapping, string input)
     {
         var result = input;
         foreach (var m in mapping)

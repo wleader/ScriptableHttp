@@ -5,7 +5,7 @@ namespace OeSystems.ScriptableHttp;
 
 public interface IPostRequestBuilder
 {
-    HttpRequestMessage Build(IReadOnlyValues values, PostRequest config);
+    HttpRequestMessage Build(IReadOnlyValues values, PostConfig config);
 }
 
 public class PostRequestBuilder(
@@ -15,7 +15,7 @@ public class PostRequestBuilder(
     IRequestHeadersBuilder requestHeadersBuilder)
     : IPostRequestBuilder
 {
-    public HttpRequestMessage Build(IReadOnlyValues values, PostRequest config)
+    public HttpRequestMessage Build(IReadOnlyValues values, PostConfig config)
     {
         using var _ = cultureContext.Set(config.Culture);
 
