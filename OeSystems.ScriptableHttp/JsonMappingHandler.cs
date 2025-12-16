@@ -18,9 +18,6 @@ public class JsonMappingHandler(
             config.Key,
             config.Format);
 
-        // todo check if a required match was not found.
-        // todo apply regex to path.
-
         foreach (var token in document.SelectTokens(config.Query))
         {
             // maybe this shouldn't be a string?

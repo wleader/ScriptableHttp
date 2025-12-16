@@ -51,4 +51,28 @@ public class JsonMappingHandlerFixture
         _formatter.Mock.Verify(x => x.GetFormatted(_values, "Key1", "FORMAT"), Times.Once);
         _formatter.Mock.VerifyNoOtherCalls();
     }
+
+    [TestMethod]
+    public void PerformMap_WritingValuesThatAreNotStrings()
+    {
+        Assert.Inconclusive("Behavior for writing values that are not strings is not implemented.");
+    }
+    
+    [TestMethod]
+    public void PerformMap_PathMulitpleMatched()
+    {
+        Assert.Inconclusive("Behavior for when the JsonPath has multiple matches is not implemented.");
+    }
+
+    [TestMethod]
+    public void PerformMap_PathNotMatched()
+    {
+        Assert.Inconclusive("Behavior for when the JsonPath is not matched is not implemented.");
+    }
+
+    [TestMethod]
+    public void PerformMap_RegexOnJsonPath()
+    {
+        Assert.Inconclusive("Regex not applied to JsonPath.");
+    }
 }
