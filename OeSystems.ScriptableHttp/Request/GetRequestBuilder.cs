@@ -1,7 +1,7 @@
 using System.Net.Http;
 using OeSystems.ScriptableHttp.Configuration;
 
-namespace OeSystems.ScriptableHttp;
+namespace OeSystems.ScriptableHttp.Request;
 
 public interface IGetRequestBuilder
 {

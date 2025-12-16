@@ -2,8 +2,9 @@ using System;
 using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using OeSystems.ScriptableHttp.Request;
 
-namespace OeSystems.ScriptableHttp.Tests;
+namespace OeSystems.ScriptableHttp.Tests.Request;
 
 [TestClass]
 public class ValueFormatterFixture

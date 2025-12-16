@@ -1,4 +1,5 @@
 using Moq;
+using OeSystems.ScriptableHttp.Request;
 
 namespace OeSystems.ScriptableHttp.Tests.Fakes;
 

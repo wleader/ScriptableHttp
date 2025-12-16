@@ -3,7 +3,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using OeSystems.ScriptableHttp.Configuration;
 
-namespace OeSystems.ScriptableHttp;
+namespace OeSystems.ScriptableHttp.Request;
 
 public interface IStringContentBuilder
 {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Reflection;
 
-namespace OeSystems.ScriptableHttp;
+namespace OeSystems.ScriptableHttp.Request;
 
 public interface IValueFormatter
 {

@@ -3,7 +3,7 @@ using Moq;
 using OeSystems.ScriptableHttp.Configuration;
 using OeSystems.ScriptableHttp.Regex;
 
-namespace OeSystems.ScriptableHttp.Tests;
+namespace OeSystems.ScriptableHttp.Tests.Request;
 
 [TestClass]
 public class BodyBuilderFixture

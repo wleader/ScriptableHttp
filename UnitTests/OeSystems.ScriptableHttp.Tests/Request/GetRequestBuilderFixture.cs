@@ -4,8 +4,9 @@ using System.Net.Http.Headers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using OeSystems.ScriptableHttp.Configuration;
+using OeSystems.ScriptableHttp.Request;
 
-namespace OeSystems.ScriptableHttp.Tests;
+namespace OeSystems.ScriptableHttp.Tests.Request;
 
 [TestClass]
 public class GetRequestBuilderFixture
