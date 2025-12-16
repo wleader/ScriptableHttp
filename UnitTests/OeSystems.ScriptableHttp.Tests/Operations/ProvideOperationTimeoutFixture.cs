@@ -1,7 +1,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OeSystems.ScriptableHttp.Configuration;
+using OeSystems.ScriptableHttp.Operations;
 
-namespace OeSystems.ScriptableHttp.Tests;
+namespace OeSystems.ScriptableHttp.Tests.Operations;
 
 [TestClass]
 public class ProvideOperationTimeoutFixture

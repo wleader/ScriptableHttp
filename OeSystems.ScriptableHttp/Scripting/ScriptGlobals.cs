@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using OeSystems.ScriptableHttp.Configuration;
+using OeSystems.ScriptableHttp.Operations;
 
 namespace OeSystems.ScriptableHttp.Scripting;
 

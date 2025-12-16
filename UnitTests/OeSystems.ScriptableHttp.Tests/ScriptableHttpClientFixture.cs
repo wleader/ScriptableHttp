@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using OeSystems.ScriptableHttp.Configuration;
+using OeSystems.ScriptableHttp.Operations;
 using OeSystems.ScriptableHttp.Scripting;
 using OeSystems.ScriptableHttp.Tests.Fakes;
 

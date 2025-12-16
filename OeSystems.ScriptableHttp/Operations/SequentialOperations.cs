@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using OeSystems.ScriptableHttp.Configuration;
 
-namespace OeSystems.ScriptableHttp.Scripting;
+namespace OeSystems.ScriptableHttp.Operations;
 
 public interface ISequentialOperations : IClient;
 

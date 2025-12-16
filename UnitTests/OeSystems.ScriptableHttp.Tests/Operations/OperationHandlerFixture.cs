@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using OeSystems.ScriptableHttp.Configuration;
+using OeSystems.ScriptableHttp.Operations;
 using OeSystems.ScriptableHttp.Request;
 using OeSystems.ScriptableHttp.Tests.Fakes;
 
-namespace OeSystems.ScriptableHttp.Tests;
+namespace OeSystems.ScriptableHttp.Tests.Operations;
 
 [TestClass]
 public class OperationHandlerFixture

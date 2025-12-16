@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using OeSystems.ScriptableHttp.Configuration;
+using OeSystems.ScriptableHttp.Operations;
 using OeSystems.ScriptableHttp.Telemetry;
 
 namespace OeSystems.ScriptableHttp.Scripting;

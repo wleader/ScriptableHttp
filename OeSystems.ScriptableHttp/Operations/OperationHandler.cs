@@ -6,7 +6,7 @@ using OeSystems.ScriptableHttp.Configuration;
 using OeSystems.ScriptableHttp.Request;
 using OeSystems.ScriptableHttp.Telemetry;
 
-namespace OeSystems.ScriptableHttp;
+namespace OeSystems.ScriptableHttp.Operations;
 
 public interface IOperationHandler
 {
