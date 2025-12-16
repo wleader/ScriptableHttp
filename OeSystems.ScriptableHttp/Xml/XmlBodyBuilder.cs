@@ -1,7 +1,7 @@
 using OeSystems.ScriptableHttp.Configuration;
 using OeSystems.ScriptableHttp.Request;
 
-namespace OeSystems.ScriptableHttp;
+namespace OeSystems.ScriptableHttp.Xml;
 
 public interface IXmlBodyBuilder : IBodyBuilder;
 

@@ -3,8 +3,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Newtonsoft.Json.Linq;
 using OeSystems.ScriptableHttp.Configuration;
+using OeSystems.ScriptableHttp.Json;
 
-namespace OeSystems.ScriptableHttp.Tests;
+namespace OeSystems.ScriptableHttp.Tests.Json;
 
 [TestClass]
 public class JsonBodyBuilderFixture

@@ -10,6 +10,7 @@ using Moq;
 using OeSystems.ScriptableHttp.Configuration;
 using OeSystems.ScriptableHttp.Operations;
 using OeSystems.ScriptableHttp.Request;
+using OeSystems.ScriptableHttp.Response;
 using OeSystems.ScriptableHttp.Tests.Fakes;
 
 namespace OeSystems.ScriptableHttp.Tests.Operations;

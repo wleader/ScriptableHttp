@@ -1,8 +1,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using OeSystems.ScriptableHttp.Configuration;
+using OeSystems.ScriptableHttp.Json;
 using OeSystems.ScriptableHttp.Regex;
 using OeSystems.ScriptableHttp.Request;
+using OeSystems.ScriptableHttp.Xml;
 
 namespace OeSystems.ScriptableHttp.Tests.Request;
 

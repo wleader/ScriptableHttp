@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using OeSystems.ScriptableHttp.Configuration;
 using OeSystems.ScriptableHttp.Request;
+using OeSystems.ScriptableHttp.Response;
 using OeSystems.ScriptableHttp.Telemetry;
 
 namespace OeSystems.ScriptableHttp.Operations;

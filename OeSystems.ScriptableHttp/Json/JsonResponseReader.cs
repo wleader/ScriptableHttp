@@ -3,8 +3,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using OeSystems.ScriptableHttp.Configuration;
+using OeSystems.ScriptableHttp.Response;
 
-namespace OeSystems.ScriptableHttp;
+namespace OeSystems.ScriptableHttp.Json;
 
 public interface IJsonResponseReader : IResponseReader;
 

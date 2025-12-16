@@ -1,9 +1,12 @@
 using System;
 using Microsoft.Extensions.DependencyInjection;
+using OeSystems.ScriptableHttp.Json;
 using OeSystems.ScriptableHttp.Operations;
 using OeSystems.ScriptableHttp.Regex;
 using OeSystems.ScriptableHttp.Request;
+using OeSystems.ScriptableHttp.Response;
 using OeSystems.ScriptableHttp.Scripting;
+using OeSystems.ScriptableHttp.Xml;
 using UriBuilder = OeSystems.ScriptableHttp.Request.UriBuilder;
 
 namespace OeSystems.ScriptableHttp;

@@ -1,8 +1,9 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using OeSystems.ScriptableHttp.Configuration;
+using OeSystems.ScriptableHttp.Json;
 
-namespace OeSystems.ScriptableHttp;
+namespace OeSystems.ScriptableHttp.Response;
 
 public interface IResponseReader
 {
