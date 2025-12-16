@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using OeSystems.ScriptableHttp.Configuration;
+using OeSystems.ScriptableHttp.Scripting;
 
 namespace OeSystems.ScriptableHttp.Tests;
 

@@ -2,6 +2,7 @@ using System;
 using Microsoft.Extensions.DependencyInjection;
 using OeSystems.ScriptableHttp.Regex;
 using OeSystems.ScriptableHttp.Request;
+using OeSystems.ScriptableHttp.Scripting;
 using UriBuilder = OeSystems.ScriptableHttp.Request.UriBuilder;
 
 namespace OeSystems.ScriptableHttp;

@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
 using Microsoft.CodeAnalysis.Scripting;
 
-namespace OeSystems.ScriptableHttp;
+namespace OeSystems.ScriptableHttp.Scripting;
 
 public interface IScriptPersistenceStore
 {

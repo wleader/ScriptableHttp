@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using OeSystems.ScriptableHttp.Configuration;
 using OeSystems.ScriptableHttp.Telemetry;
 
-namespace OeSystems.ScriptableHttp;
+namespace OeSystems.ScriptableHttp.Scripting;
 
 public interface IScriptedOperations : IClient;
 

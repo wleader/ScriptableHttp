@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using OeSystems.ScriptableHttp.Configuration;
 
-namespace OeSystems.ScriptableHttp;
+namespace OeSystems.ScriptableHttp.Scripting;
 
 public class ScriptGlobals(
     IOperationHandler operationHandler,

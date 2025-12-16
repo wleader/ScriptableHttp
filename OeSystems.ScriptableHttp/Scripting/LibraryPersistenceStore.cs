@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Linq;
+using OeSystems.ScriptableHttp.Scripting;
 
 namespace OeSystems.ScriptableHttp;
 

@@ -3,7 +3,7 @@ using Microsoft.CodeAnalysis.Scripting;
 using OeSystems.ScriptableHttp.Configuration;
 using OeSystems.ScriptableHttp.Telemetry;
 
-namespace OeSystems.ScriptableHttp;
+namespace OeSystems.ScriptableHttp.Scripting;
 
 public interface IScriptCompiler
 {
