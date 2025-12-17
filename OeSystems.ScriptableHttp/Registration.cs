@@ -42,5 +42,8 @@ public static class Registration
         services.AddSingleton<TimeProvider>(_ => TimeProvider.System);
         services.AddSingleton<IScriptCompiler, ScriptCompiler>();
         services.AddScoped<IJsonResponseReader, JsonResponseReader>();
+        services.AddScoped<IXmlResponseReader, XmlResponseReader>();
+        services.AddScoped<IRegexResponseReader, RegexResponseReader>();
+        services.AddScoped<IResponseHeadersReader, ResponseHeadersReader>();
     }
 }
