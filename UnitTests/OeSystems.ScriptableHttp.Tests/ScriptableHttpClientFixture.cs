@@ -16,8 +16,8 @@ public sealed class ScriptableHttpClientFixture
     private readonly Mock<IScriptedOperations> _scriptedOperations = new();
 
     private ScriptableHttpConfig _config = null!;
-    private readonly ValuesResult _sequentialOperationResult = Result.FromValue(Values.Empty);
-    private readonly ValuesResult _scriptedOperationResult = Result.FromValue(Values.Empty);
+    private readonly ValuesResult _sequentialOperationResult = ValuesResult.Success(Values.Empty);
+    private readonly ValuesResult _scriptedOperationResult = ValuesResult.Success(Values.Empty);
 
     [TestInitialize]
     public void Initialize()
