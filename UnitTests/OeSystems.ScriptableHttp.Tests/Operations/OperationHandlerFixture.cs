@@ -99,7 +99,7 @@ public class OperationHandlerFixture
     {
         var actual = await _handler.Invoke(_operationConfig);
         Assert.IsTrue(actual.IsSuccess);
-        Assert.AreSame(_combineResult2, actual.Values);
+        Assert.AreSame(_combineResult2, actual.Value);
         
         _requestBuilder.Verify(x => x.Build(_combineResult1, _operationConfig.Request), Times.Once);
         _requestBuilder.VerifyNoOtherCalls();

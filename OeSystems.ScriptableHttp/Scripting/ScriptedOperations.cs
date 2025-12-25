@@ -14,7 +14,7 @@ public class ScriptedOperations(
     IOperationHandler operationHandler)
     : IScriptedOperations
 {
-    public async Task<Result> Invoke(ScriptableHttpConfig config, IReadOnlyValues inputValues)
+    public async Task<ValuesResult> Invoke(ScriptableHttpConfig config, IReadOnlyValues inputValues)
     {
         using var activity = new ScriptActivity(config);
 

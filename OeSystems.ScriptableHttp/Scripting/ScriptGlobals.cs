@@ -11,7 +11,7 @@ public class ScriptGlobals(
     ScriptableHttpConfig config,
     IScriptPersistenceStore persistence)
 {
-    private Result _lastResult = new(ResultCode.Error, new Values());
+    private ValuesResult _lastResult = new(new Values(), Errors.None);
     
     /// <summary>
     /// Allows a script to check if the last invoked operation was successful.
@@ -38,7 +38,7 @@ public class ScriptGlobals(
     /// </summary>
     public void SetPersisted(string key)
     {
-        if (!_lastResult.Values.TryGetValue(key, out var value))
+        if (!_lastResult.Value.TryGetValue(key, out var value))
         {
             throw new ScriptException("SetPersisted Key not found: " + key);
         }

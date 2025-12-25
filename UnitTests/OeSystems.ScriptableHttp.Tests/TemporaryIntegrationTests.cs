@@ -78,7 +78,7 @@ public class TemporaryIntegrationTests
         var result = await _client.Invoke(config, values);
         
         Assert.IsTrue(result.IsSuccess);
-        var resultValues = result.Values;
+        var resultValues = result.Value;
 
         Console.WriteLine("Result Values:");
         Console.WriteLine(JsonSerializer.Serialize(resultValues, PrettyJson));

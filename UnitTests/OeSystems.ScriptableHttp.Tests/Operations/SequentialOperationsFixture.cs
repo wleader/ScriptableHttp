@@ -25,7 +25,7 @@ public class SequentialOperationsFixture
                 x => x.Reset(It.IsAny<IReadOnlyValues>()),
                 Times.Once,
                 "The Operation Handler must be reset before any invocations."))
-            .ReturnsAsync(() => new (ResultCode.Success, _outputValues));
+            .ReturnsAsync(() => new (_outputValues, Errors.None));
 
         _client = new (
             _operationHandler.Object);
@@ -82,11 +82,11 @@ public class SequentialOperationsFixture
         var configuration = Given_Configuration();
 
         _operationHandler.Setup(x => x.Invoke(configuration.Operation[0]))
-            .ReturnsAsync(new Result(ResultCode.Error, _outputValues));
+            .ReturnsAsync(new ValuesResult(_outputValues, Errors.Create("Test Error")));
 
         var actual = await _client.Invoke(configuration, inputValues);
         Assert.IsTrue(actual.IsError);
-        Assert.AreSame(actual.Values, _outputValues);
+        Assert.AreSame(actual.Value, _outputValues);
     }
 
     [TestMethod]
@@ -96,11 +96,11 @@ public class SequentialOperationsFixture
         var configuration = Given_Configuration();
 
         _operationHandler.Setup(x => x.Invoke(configuration.Operation[1]))
-            .ReturnsAsync(new Result(ResultCode.Error, _outputValues));
+            .ReturnsAsync(new ValuesResult(_outputValues, Errors.Create("Test Error")));
 
         var actual = await _client.Invoke(configuration, inputValues);
         Assert.IsTrue(actual.IsError);
-        Assert.AreSame(actual.Values, _outputValues);
+        Assert.AreSame(actual.Value, _outputValues);
         _operationHandler.Verify(x => x.Invoke(configuration.Operation[0]), Times.Once);
         _operationHandler.Verify(x => x.Invoke(configuration.Operation[1]), Times.Once);
         _operationHandler.VerifyNoOtherCalls();

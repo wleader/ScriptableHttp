@@ -12,8 +12,8 @@ namespace OeSystems.ScriptableHttp.Operations;
 public interface IOperationHandler
 {
     void Reset(IReadOnlyValues inputValues);
-    Task<Result> Invoke(OperationConfig operationConfig);
-    Result LastResult { get; }
+    Task<ValuesResult> Invoke(OperationConfig operationConfig);
+    ValuesResult LastResult { get; }
 }
 
 public class OperationHandler(
@@ -28,9 +28,9 @@ public class OperationHandler(
 
     public void Reset(IReadOnlyValues inputValues) => values.Reset(inputValues);
 
-    public Result LastResult { get; private set; } = new(ResultCode.Error, new Values());
+    public ValuesResult LastResult { get; private set; } = new(Values.Empty, Errors.None);
 
-    public async Task<Result> Invoke(OperationConfig config)
+    public async Task<ValuesResult> Invoke(OperationConfig config)
     {
         await _semaphore.WaitAsync();
         using var activity = new OperationInvokeActivity(config);
@@ -40,7 +40,7 @@ public class OperationHandler(
         var token = tokenFactory.GetToken(config);
 
         HttpResponseMessage? httpResponse;
-        Result result;
+        ValuesResult result;
         try
         {
             httpResponse = await httpClient.SendAsync(httpRequest, token);
@@ -48,16 +48,15 @@ public class OperationHandler(
         catch (Exception ex)
         {
             activity.AddException(ex);
-            // log something? 
-            // put the exception in the result object?
-            result = LastResult = new(ResultCode.Error, values.Combine());
+            result = LastResult = new(values.Combine(),
+                Errors.Create("There was an error while processing the request.", ex));
             _semaphore.Release();
             return result;
         }
 
         var responseValues = await responseReader.Read(httpResponse, config.Response);
         values.Add(responseValues);
-        result = LastResult = new(ResultCode.Success, values.Combine());
+        result = LastResult = new(values.Combine(), Errors.None);
         _semaphore.Release();
         return result;
     }

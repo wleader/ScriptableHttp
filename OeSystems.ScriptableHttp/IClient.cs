@@ -5,7 +5,7 @@ namespace OeSystems.ScriptableHttp;
 
 public interface IClient
 {
-    public Task<Result> Invoke(
+    public Task<ValuesResult> Invoke(
         ScriptableHttpConfig config,
         IReadOnlyValues inputValues);
 }

@@ -9,10 +9,10 @@ public class SequentialOperations(
     IOperationHandler operationHandler)
     : ISequentialOperations
 {
-    public async Task<Result> Invoke(ScriptableHttpConfig config, IReadOnlyValues inputValues)
+    public async Task<ValuesResult> Invoke(ScriptableHttpConfig config, IReadOnlyValues inputValues)
     {
         operationHandler.Reset(inputValues);
-        Result result = default;
+        ValuesResult result = default;
         foreach (var operation in config.Operation)
         {
             result = await operationHandler.Invoke(operation);

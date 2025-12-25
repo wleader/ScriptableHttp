@@ -12,7 +12,7 @@ public class ScriptableHttpClient(
     ISequentialOperations sequentialOperations,
     IScriptedOperations scriptedOperations) : IScriptableHttpClient
 {
-    public async Task<Result> Invoke(
+    public async Task<ValuesResult> Invoke(
         ScriptableHttpConfig config,
         IReadOnlyValues inputValues)
     {
