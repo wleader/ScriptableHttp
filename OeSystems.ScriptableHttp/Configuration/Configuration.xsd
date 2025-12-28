@@ -141,7 +141,7 @@
         <attribute name="key" type="string" use="required"/>
         <attribute name="required" type="boolean" default="false"/>
         <attribute name="format" type="string"/>
-        <attribute name="dataType" type="string" default="System.String"/>
+        <attribute name="dataType" type="config:DataType" default="System.String"/>
     </complexType>
 
     <complexType name="XPathMap">
@@ -170,6 +170,23 @@
             <extension base="config:BaseMap"/>
         </complexContent>
     </complexType>
+    
+    <simpleType name="DataType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="System.String"/>
+            <xs:enumeration value="System.Int32"/>
+            <xs:enumeration value="System.Int64"/>
+            <xs:enumeration value="System.UInt64"/>
+            <xs:enumeration value="System.Boolean"/>
+            <xs:enumeration value="System.Single"/>
+            <xs:enumeration value="System.Double"/>
+            <xs:enumeration value="System.Char"/>
+            <xs:enumeration value="System.Guid"/>
+            <xs:enumeration value="System.TimeSpan"/>
+            <xs:enumeration value="System.DateTime"/>
+            <xs:enumeration value="System.DateTimeOffset"/>
+        </xs:restriction>
+    </simpleType>
 
     <complexType name="RegexMap">
         <annotation>
